@@ -47,14 +47,15 @@ echo Do you want to configure ePortal to work with KernelCare+
 echo Please type Yes or No
 
 read varAnswer
+a=$varAnswer
 
-if [$varAnswer == Yes]
+if [ $a == Yes ]  | [ $a == yes ]
 then
 
      echo We are now going to configure ePortal to work with KernelCare+ packages
      echo We are going to download our base userspace file...
 
-     wget https://github.com/Revmagi/eportal_installer/blob/master/userspace-20200720-074750.tar.gz
+     wget https://github.com/Revmagi/eportal_installer/raw/master/userspace-20200720-074750.tar.gz
 
      echo File was downloaded successfully
 
@@ -62,19 +63,21 @@ then
 
        rm -rf /usr/share/kcare-eportal/userspace/
 
-       tar xf /tmp/userspace-20200717-144922.tar.gz -C /usr/share/kcare-eportal/
+       tar xf ./userspace-20200720-074750.tar.gz -C /usr/share/kcare-eportal/
 
       echo   "Add nginx location for the new files, if it not exists:"
 
        grep -qF 'userspace' /etc/nginx/conf.d/eportal.conf || sed -i "\$i location ~* ^/userspace/(.*)/(.*)/kpatch.tgz$ {alias /usr/share/kcare-eportal; try_files /userspace/all/\$2.tgz =404;}" /etc/nginx/conf.d/eportal.conf
 
+      echo New files have been added and properly updated
+      sleep 3s
       echo Reload nginx
 
        systemctl reload nginx
 
 
        echo Eportal configured for KernelCare+
-       sleep 10s
+       sleep 5s
   else
 
     echo ePortal will not be configured for KernelCare+
