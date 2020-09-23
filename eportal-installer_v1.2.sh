@@ -51,14 +51,14 @@ a=$varAnswer
 
 if [ $a == yes ]
 then
-
+     clear
      echo We are now going to configure ePortal to work with KernelCare+ packages
      echo We are going to download our base userspace file...
 
      wget https://github.com/Revmagi/eportal_installer/raw/master/userspace-20200720-074750.tar.gz
 
      echo File was downloaded successfully
-
+     echo ""
      echo "Extract it to the portal's static files location"
 
        rm -rf /usr/share/kcare-eportal/userspace/
@@ -79,9 +79,9 @@ then
        echo Eportal configured for KernelCare+
        sleep 5s
   else
-
+    clear
     echo ePortal will not be configured for KernelCare+
-    sleep 10s
+    sleep 5s
 
   fi
 
