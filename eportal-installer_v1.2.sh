@@ -48,7 +48,7 @@ echo Please type Yes or No
 
 read varAnswer
 
-if [varAnswer == Yes]
+if [$varAnswer == Yes]
 then
 
      echo We are now going to configure ePortal to work with KernelCare+ packages
