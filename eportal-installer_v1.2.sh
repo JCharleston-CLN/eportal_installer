@@ -44,12 +44,12 @@ kc.eportal -a admin -p $varPassword
 clear
 
 echo Do you want to configure ePortal to work with KernelCare+
-echo Please type Yes or No
+echo Please type yes or no
 
 read varAnswer
 a=$varAnswer
 
-if [ $a == Yes ]  | [ $a == yes ]
+if [ $a == yes ]
 then
 
      echo We are now going to configure ePortal to work with KernelCare+ packages
